@@ -2,7 +2,8 @@ import network
 import credentials
 from machine import Pin
 from time import sleep
-from microdot import Microdot, Response
+from microdot_asyncio import Microdot, Response
+import uasyncio
 
 HOSTNAME = "twilight"
 
@@ -21,12 +22,11 @@ def get_wlan():
 app = Microdot()
 
 @app.route('/')
-def index(request):
+async def index(request):
   return Response(body="hi")
-
 
 motor = Pin(32, Pin.OUT)
 wlan = get_wlan()
-app.run(debug=True, port=80)
-print("hi from after the run")
-
+uasyncio.create_task(app.start_server(debug=True, port=80))
+print("after server")
+uasyncio.get_event_loop().run_forever()
