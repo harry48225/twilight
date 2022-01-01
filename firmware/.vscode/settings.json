@@ -1,0 +1,6 @@
+{
+  "python.analysis.extraPaths": [
+    "./micropython-stubs/stubs/micropython-esp32-1_17",
+    "./lib"
+  ]
+}
