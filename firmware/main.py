@@ -1,6 +1,6 @@
 import network
 import credentials
-from machine import Pin
+from machine import Pin, freq
 from time import sleep
 from microdot_asyncio import Microdot, Response
 import uasyncio
@@ -51,9 +51,9 @@ async def off(request):
   motor_on = False
   return Response(body="motor turned off")
 
-
+freq(240_000_000) # Set the clock speed to maximum
 wlan = get_wlan()
 uasyncio.create_task(app.start_server(debug=True, port=80))
-uasyncio.create_task(motor_loop())
+#uasyncio.create_task(motor_loop())
 print("after server")
 uasyncio.get_event_loop().run_forever()
