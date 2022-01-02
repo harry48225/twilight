@@ -2,7 +2,7 @@ import network
 import credentials
 from machine import Pin, freq
 from time import sleep
-from microdot_asyncio import Microdot, Response
+from microdot_asyncio import Microdot, Response, send_file
 import uasyncio
 
 HOSTNAME = "twilight"
@@ -37,15 +37,26 @@ app = Microdot()
 
 @app.route('/')
 async def index(request):
-  return Response(body="hi")
+  return send_file("public/index.html")
 
-@app.route('/on')
+@app.route('/<re:([^a]|a[^p]|ap[^i]).*:path>')
+async def not_api(request, path):
+  # not an api endpoint so serve the public file
+  try:
+    # Kinda a big security risk... should probably sanitise these
+    response = send_file(f"public/{path}")
+  except:
+    response = send_file("public/index.html")
+
+  return response
+
+@app.route('api/on')
 async def on(request):
   global motor_on
   motor_on = True
   return Response(body="motor turned on")
 
-@app.route('/off')
+@app.route('api/off')
 async def off(request):
   global motor_on
   motor_on = False
