@@ -1,9 +1,10 @@
 import network
 import credentials
 from machine import Pin, freq
-from time import sleep
+from time import sleep, localtime
 from microdot_asyncio import Microdot, Response, send_file
 import uasyncio
+import ntptime
 
 HOSTNAME = "twilight"
 
@@ -29,9 +30,14 @@ def get_wlan():
 
   print(f"connecting to wlan {credentials.SSID}, with password: {credentials.PASSWORD}")
   while not wlan.isconnected():
+    print(".", end="")
+    sleep(1)
     pass
   print("connected!")
   return wlan
+
+def set_clock():
+  ntptime.settime()
 
 app = Microdot()
 
@@ -62,9 +68,14 @@ async def off(request):
   motor_on = False
   return Response(body="motor turned off")
 
+@app.route('api/current_time')
+async def current_time(request):
+  return str(localtime())
+
 freq(240_000_000) # Set the clock speed to maximum
 wlan = get_wlan()
+set_clock()
 uasyncio.create_task(app.start_server(debug=True, port=80))
 #uasyncio.create_task(motor_loop())
-print("after server")
+print("server started")
 uasyncio.get_event_loop().run_forever()
