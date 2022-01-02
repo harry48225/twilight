@@ -1,15 +1,15 @@
 <script lang="ts">
+import Header from "./Header.svelte";
+
 </script>
 
+<Header/>
 <main>
-	<h1>twilight</h1>
+	<button>lower</button>
+	<button>raise</button>
 </main>
 
 <style>
-	h1 {
-		float: left;
-	}
-
 	main {
 		text-align: center;
 		padding: 1em;
