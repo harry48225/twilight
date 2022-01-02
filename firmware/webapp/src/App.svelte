@@ -1,5 +1,6 @@
 <script lang="ts">
 import Header from "./Header.svelte";
+import Scheduler from "./Scheduler.svelte";
 import SunPositionTable from "./SunPositionTable.svelte";
 
 </script>
@@ -9,6 +10,7 @@ import SunPositionTable from "./SunPositionTable.svelte";
 	<SunPositionTable/>
 	<button>lower</button>
 	<button>raise</button>
+	<Scheduler/>
 </main>
 
 <style>
