@@ -4,7 +4,7 @@
 </script>
 
 <div>
-  The blind will open at 
+  open at 
   <select bind:value={openTime}>
     <option>nautical dawn</option>
     <option>dawn</option>
