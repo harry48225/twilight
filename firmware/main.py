@@ -12,7 +12,7 @@ class Motor_Contoller():
   DIRECTION_UP = 1
   DIRECTION_DOWN = 0
   MOTOR_DELAY = 0.001
-  LOWERED_POSITION = 10_000#170_000 # Good for highest microstepping resolution
+  LOWERED_POSITION = 170_000 # Good for highest microstepping resolution
   MOTOR_FILE = "motor_position.txt"
   def __init__(self):
     self.stepPin = Pin(32, Pin.OUT)

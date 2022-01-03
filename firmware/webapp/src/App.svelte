@@ -8,8 +8,8 @@ import SunPositionTable from "./SunPositionTable.svelte";
 <Header/>
 <main>
 	<SunPositionTable/>
-	<button>lower</button>
-	<button>raise</button>
+	<button on:click={() => fetch("/api/lower_blind")}>lower</button>
+	<button on:click={() => fetch("/api/raise_blind")}>raise</button>
 	<Scheduler/>
 </main>
 
