@@ -45,8 +45,18 @@ def get_wlan():
   print("connected!")
   return wlan
 
-def set_clock():
-  ntptime.settime()
+async def set_clock():
+  print("trying to get ntp time")
+  while True:
+    try:
+      ntptime.settime()
+      print("successfully synced with ntp time")
+      break
+    except:
+      print("error aquiring time, retrying")
+      await uasyncio.sleep(1)
+
+
 
 app = Microdot()
 
@@ -85,7 +95,7 @@ motor = Motor_Contoller()
 
 freq(240_000_000) # Set the clock speed to maximum
 wlan = get_wlan()
-set_clock()
+uasyncio.create_task(set_clock())
 uasyncio.create_task(app.start_server(debug=True, port=80))
 print("server started")
 uasyncio.get_event_loop().run_forever()
