@@ -76,6 +76,6 @@ freq(240_000_000) # Set the clock speed to maximum
 wlan = get_wlan()
 set_clock()
 uasyncio.create_task(app.start_server(debug=True, port=80))
-#uasyncio.create_task(motor_loop())
+uasyncio.create_task(motor_loop())
 print("server started")
 uasyncio.get_event_loop().run_forever()
