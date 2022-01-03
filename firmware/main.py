@@ -12,7 +12,7 @@ class Motor_Contoller():
   DIRECTION_UP = 1
   DIRECTION_DOWN = 0
   MOTOR_DELAY = 0.001
-  LOWERED_POSITION = 170_000 # Good for highest microstepping resolution
+  LOWERED_POSITION = 10_000#170_000 # Good for highest microstepping resolution
   MOTOR_FILE = "motor_position.txt"
   def __init__(self):
     self.stepPin = Pin(32, Pin.OUT)
@@ -20,6 +20,7 @@ class Motor_Contoller():
     self.motor = Pin(25, Pin.OUT) # Connected to the sleep pin
     self.motor.off()
     self.motor_position: int = self.load_saved_position()
+    self.running = False
 
   def load_saved_position(self)->int:
     motor_position = 0
@@ -60,16 +61,19 @@ class Motor_Contoller():
     self.direction.value(self.DIRECTION_DOWN)
     self.motor.on()
     print("lowering blind")
+    self.running = True
     while self.motor_position < self.LOWERED_POSITION:
       await self.step()
       await uasyncio.sleep(self.MOTOR_DELAY)
     self.motor.off()
     self.save_position()
     print("blind lowered!")
+    self.running = False
 
   async def raise_blind(self):
     self.direction.value(self.DIRECTION_UP)
     self.motor.on()
+    self.running = True
     print("raising blind")
     while self.motor_position > 0:
       await self.step()
@@ -77,6 +81,7 @@ class Motor_Contoller():
     self.motor.off()
     self.save_position()
     print("blind raised!")
+    self.running = False
 
 def get_wlan():
   wlan = network.WLAN(network.STA_IF)
@@ -122,17 +127,22 @@ async def not_api(request, path):
 
   return response
 
-@app.route('api/on')
-async def on(request):
-  global motor_on
-  motor_on = True
-  return Response(body="motor turned on")
 
-@app.route('api/off')
-async def off(request):
-  global motor_on
-  motor_on = False
-  return Response(body="motor turned off")
+@app.route('api/lower_blind')
+async def lower_blind(request):
+  if (motor.running):
+    return Response(status_code=503) # Service unavailable code
+  else:
+    uasyncio.create_task(motor.lower_blind())
+    return Response()
+
+@app.route('api/raise_blind')
+async def raise_blind(request):
+  if (motor.running):
+    return Response(status_code=503) # Service unavailable code
+  else:
+    uasyncio.create_task(motor.raise_blind())
+    return Response()
 
 @app.route('api/current_time')
 async def current_time(request):
