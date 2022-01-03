@@ -1,4 +1,5 @@
 <script lang="ts">
+import BlindGraphic from "./BlindGraphic.svelte";
 import Header from "./Header.svelte";
 import Scheduler from "./Scheduler.svelte";
 import SunPositionTable from "./SunPositionTable.svelte";
@@ -11,6 +12,7 @@ import SunPositionTable from "./SunPositionTable.svelte";
 	<button on:click={() => fetch("/api/lower_blind")}>lower</button>
 	<button on:click={() => fetch("/api/raise_blind")}>raise</button>
 	<Scheduler/>
+	<BlindGraphic/>
 </main>
 
 <style>
