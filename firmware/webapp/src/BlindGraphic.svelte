@@ -1,11 +1,17 @@
 <script lang="ts">
-  export let height: number = 0;
+  import { tweened } from 'svelte/motion';
+  export let height: number;
 
-  setTimeout(() => {height = 256}, 500);
+  const tweenedHeight = tweened(0, {
+    duration: 5000,
+    easing: (t) => Math.sin(-13.0 * (t + 1.0) * Math.PI/2) * Math.pow(2.0, -40.0 * t) + 1.0 // Tweaked elastic out
+  })
+
+  $: $tweenedHeight = height;
 </script>
 
 <div class="canvas">
-  <div class="blind" style={`height: ${height}px`}>
+  <div class="blind" style={`height: ${Math.max($tweenedHeight,0)}px`}>
   </div>
 </div>
 
