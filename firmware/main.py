@@ -8,19 +8,28 @@ import ntptime
 
 HOSTNAME = "twilight"
 
-motor = Pin(32, Pin.OUT)
-motor_on = False
+class Motor_Contoller():
+  def __init__(self):
+    self.step = Pin(32, Pin.OUT)
+    self.direction = Pin(33, Pin.OUT) # on is up, off is down
+    self.motor = Pin(25, Pin.OUT) # Connected to the sleep pin
+    self.motor.off()
+    self.motor_position: int = self.load_saved_position()
 
-async def motor_loop():
-  global motor_on
-  while True:
-    print(motor_on)
-    while (motor_on):
-      motor.on()
-      motor.off()
-      await uasyncio.sleep(0.0005)
+  def load_saved_position(self)->int:
+    motor_position = 0
+    try:
+      with open("motor_position.txt", "r") as f:
+        motor_position = int(f.read())  
 
-    await uasyncio.sleep_ms(100)
+      print(f"Loaded motor position of {motor_position}")
+    except OSError:
+      print("Motor position file doesn't exist :(, creating it!")
+      with open("motor_position.txt", "w") as f:
+        f.write(str(motor_position))
+      
+    return motor_position
+
 
 def get_wlan():
   wlan = network.WLAN(network.STA_IF)
@@ -72,10 +81,11 @@ async def off(request):
 async def current_time(request):
   return str(localtime())
 
+motor = Motor_Contoller()
+
 freq(240_000_000) # Set the clock speed to maximum
 wlan = get_wlan()
 set_clock()
 uasyncio.create_task(app.start_server(debug=True, port=80))
-uasyncio.create_task(motor_loop())
 print("server started")
 uasyncio.get_event_loop().run_forever()
