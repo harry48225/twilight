@@ -1,34 +1,30 @@
 <script lang="ts">
-  type sunTimes = {
-    'sunriseEnd': Date,
-    'goldenHourEnd': Date,
-    'dusk': Date,
-    'nightEnd': Date,
-    'night': Date,
-    'goldenHour': Date,
-    'sunset': Date,
-    'nauticalDawn': Date,
-    'sunsetStart': Date,
-    'dawn': Date,
-    'nauticalDusk': Date,
-    'sunrise': Date
-  };
-  export const times: sunTimes = {
-    'sunriseEnd': new Date('2017-09-06 06:48:24'), 
-    'goldenHourEnd': new Date('2017-09-06 07:20:27'), 
-    'dusk': new Date('2017-09-06 19:59:44'), 
-    'nightEnd': new Date('2017-09-06 05:15:09'), 
-    'night': new Date('2017-09-06 21:03:39'), 
-    'goldenHour': new Date('2017-09-06 18:58:21'), 
-    'sunset': new Date('2017-09-06 19:33:08'), 
-    'nauticalDawn': new Date('2017-09-06 05:47:35'), 
-    'sunsetStart': new Date('2017-09-06 19:30:24'), 
-    'dawn': new Date('2017-09-06 06:19:04'), 
-    'nauticalDusk': new Date('2017-09-06 20:31:13'), 
-    'sunrise': new Date('2017-09-06 06:45:40')
-  };
+import { onMount } from "svelte";
+type sunTimes = {
+  'sunriseEnd': string,
+  'goldenHourEnd': string,
+  'dusk': string,
+  'nightEnd': string,
+  'night': string,
+  'goldenHour': string,
+  'sunset': string,
+  'nauticalDawn': string,
+  'sunsetStart': string,
+  'dawn': string,
+  'nauticalDusk': string,
+  'sunrise': string
+};
 
-  const readableTime = (date: Date) => `${date.getHours().toString().padStart(2,'0')}:${date.getMinutes().toString().padStart(2,'0')}`
+let times: sunTimes = undefined;
+
+onMount(async () => {
+  times = await (await fetch('/api/sun_times')).json();
+  console.log(times)
+});
+
+const readableTime = (dateString: string) => {
+  const date = new Date(dateString);
+  return `${date.getHours().toString().padStart(2,'0')}:${date.getMinutes().toString().padStart(2,'0')}`}
 </script>
 
 <table>
@@ -41,12 +37,21 @@
     <th>nautical dusk</th>
   </tr>
   <tr>
-    <td>{readableTime(times.nauticalDawn)}</td>
-    <td>{readableTime(times.dawn)}</td>
-    <td>{readableTime(times.sunrise)}</td>
-    <td>{readableTime(times.sunset)}</td>
-    <td>{readableTime(times.dusk)}</td>
-    <td>{readableTime(times.nauticalDusk)}</td>
+    {#if times}
+      <td>{readableTime(times.nauticalDawn)}</td>
+      <td>{readableTime(times.dawn)}</td>
+      <td>{readableTime(times.sunrise)}</td>
+      <td>{readableTime(times.sunset)}</td>
+      <td>{readableTime(times.dusk)}</td>
+      <td>{readableTime(times.nauticalDusk)}</td>
+    {:else}
+      <td>--:--</td>
+      <td>--:--</td>
+      <td>--:--</td>
+      <td>--:--</td>
+      <td>--:--</td>
+      <td>--:--</td>
+    {/if}
   </tr>
 </table>
 

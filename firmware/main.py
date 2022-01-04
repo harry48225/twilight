@@ -5,6 +5,10 @@ from time import sleep, localtime
 from microdot_asyncio import Microdot, Response, send_file
 import uasyncio
 import ntptime
+import suncalc
+
+LAT = 53.576866
+LONG = -2.428219
 
 HOSTNAME = "twilight"
 
@@ -155,6 +159,11 @@ async def current_time(request):
 async def normalised_height(request):
   print(motor.get_normalised_height())
   return Response(body={'height': motor.get_normalised_height()})
+
+@app.route('api/sun_times')
+async def sun_times(request):
+  times = suncalc.getTimes(localtime(), LAT, LONG)
+  return Response(body=times)
 
 motor = Motor_Contoller()
 
