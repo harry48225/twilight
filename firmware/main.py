@@ -15,7 +15,7 @@ HOSTNAME = "twilight"
 class Motor_Contoller():
   DIRECTION_UP = 1
   DIRECTION_DOWN = 0
-  MOTOR_DELAY = 0.001
+  MOTOR_DELAY = 0.000025
   LOWERED_POSITION = 170_000/2 #170_000 is for 1/32 step  Good for highest microstepping resolution
   MOTOR_FILE = "motor_position.txt"
   def __init__(self):
@@ -52,7 +52,6 @@ class Motor_Contoller():
   async def step(self):
     '''steps the motor in the current direction, note: the motor must be turned on'''
     self.stepPin.on()
-    await uasyncio.sleep(self.MOTOR_DELAY/2)
     self.stepPin.off()
     if self.direction.value() == self.DIRECTION_UP:
       self.motor_position -= 1
