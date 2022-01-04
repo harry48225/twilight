@@ -4,7 +4,7 @@ import Header from "./Header.svelte";
 import Scheduler from "./Scheduler.svelte";
 import SunPositionTable from "./SunPositionTable.svelte";
 
-let height = 512;
+let normalisedHeight: number = 1;
 </script>
 
 <Header/>
@@ -13,7 +13,7 @@ let height = 512;
 	<button on:click={() => fetch("/api/lower_blind")}>lower</button>
 	<button on:click={() => fetch("/api/raise_blind")}>raise</button>
 	<Scheduler/>
-	<BlindGraphic height={height}/>
+	<BlindGraphic normalisedHeight={normalisedHeight}/>
 </main>
 
 <style>

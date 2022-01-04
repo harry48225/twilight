@@ -1,13 +1,15 @@
 <script lang="ts">
   import { tweened } from 'svelte/motion';
-  export let height: number;
+  const minHeight = 30;
+  const maxHeight = 512;
+  export let normalisedHeight: number; // Normalised
 
   const tweenedHeight = tweened(0, {
     duration: 5000,
     easing: (t) => Math.sin(-13.0 * (t + 1.0) * Math.PI/2) * Math.pow(2.0, -40.0 * t) + 1.0 // Tweaked elastic out
   })
 
-  $: $tweenedHeight = height;
+  $: $tweenedHeight = minHeight + normalisedHeight * (maxHeight - minHeight);
 </script>
 
 <div class="canvas">
