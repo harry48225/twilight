@@ -1,10 +1,17 @@
 <script lang="ts">
+import { onMount } from "svelte";
+
 import BlindGraphic from "./BlindGraphic.svelte";
 import Header from "./Header.svelte";
 import Scheduler from "./Scheduler.svelte";
 import SunPositionTable from "./SunPositionTable.svelte";
 
-let normalisedHeight: number = 1;
+let normalisedHeight: number = 0;
+
+onMount(async () => {
+	normalisedHeight = (await (await fetch("/api/normalised_height")).json()).height;
+});
+
 </script>
 
 <Header/>

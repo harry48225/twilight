@@ -22,6 +22,9 @@ class Motor_Contoller():
     self.motor_position: int = self.load_saved_position()
     self.running = False
 
+  def get_normalised_height(self):
+    return float(self.motor_position) / float(self.LOWERED_POSITION)
+
   def load_saved_position(self)->int:
     motor_position = 0
     try:
@@ -147,6 +150,11 @@ async def raise_blind(request):
 @app.route('api/current_time')
 async def current_time(request):
   return str(localtime())
+
+@app.route('api/normalised_height')
+async def normalised_height(request):
+  print(motor.get_normalised_height())
+  return Response(body={'height': motor.get_normalised_height()})
 
 motor = Motor_Contoller()
 
