@@ -1315,7 +1315,7 @@
     (uuid 5b053de1-d132-4184-809e-d854fad21bc8)
     (property "Reference" "C1" (id 0) (at 34.29 90.17 90))
     (property "Value" "1uF" (id 1) (at 34.29 95.25 90))
-    (property "Footprint" "" (id 2) (at 34.29 92.71 0)
+    (property "Footprint" "Capacitor_SMD:C_1206_3216Metric_Pad1.33x1.80mm_HandSolder" (id 2) (at 34.29 92.71 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (id 3) (at 34.29 92.71 0)
@@ -1334,7 +1334,7 @@
     (property "Value" "10k " (id 1) (at 43.18 88.8999 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "" (id 2) (at 38.862 87.63 90)
+    (property "Footprint" "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder" (id 2) (at 38.862 87.63 90)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (id 3) (at 40.64 87.63 0)
@@ -1488,7 +1488,7 @@
     (property "Value" "0.1uF" (id 1) (at 54.61 68.5862 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "" (id 2) (at 52.07 67.31 0)
+    (property "Footprint" "Capacitor_SMD:C_1206_3216Metric_Pad1.33x1.80mm_HandSolder" (id 2) (at 52.07 67.31 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (id 3) (at 52.07 67.31 0)
@@ -1691,7 +1691,7 @@
     (property "Value" "10uF" (id 1) (at 41.91 68.5862 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "" (id 2) (at 39.37 67.31 0)
+    (property "Footprint" "Capacitor_SMD:C_1206_3216Metric_Pad1.33x1.80mm_HandSolder" (id 2) (at 39.37 67.31 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (id 3) (at 39.37 67.31 0)
@@ -1914,13 +1914,13 @@
       (reference "A1") (unit 1) (value "Breakout_DRV8825") (footprint "Module:Pololu_Breakout-16_15.2x20.3mm")
     )
     (path "/5b053de1-d132-4184-809e-d854fad21bc8"
-      (reference "C1") (unit 1) (value "1uF") (footprint "")
+      (reference "C1") (unit 1) (value "1uF") (footprint "Capacitor_SMD:C_1206_3216Metric_Pad1.33x1.80mm_HandSolder")
     )
     (path "/b989eb92-f813-477a-809c-6e6478d4521b"
-      (reference "C2") (unit 1) (value "10uF") (footprint "")
+      (reference "C2") (unit 1) (value "10uF") (footprint "Capacitor_SMD:C_1206_3216Metric_Pad1.33x1.80mm_HandSolder")
     )
     (path "/9a0b6919-48cc-44cf-b0ea-1c0f31d6f58a"
-      (reference "C3") (unit 1) (value "0.1uF") (footprint "")
+      (reference "C3") (unit 1) (value "0.1uF") (footprint "Capacitor_SMD:C_1206_3216Metric_Pad1.33x1.80mm_HandSolder")
     )
     (path "/b698d2dc-df41-461d-8031-8b8ce841d1ca"
       (reference "C4") (unit 1) (value "100uF") (footprint "Capacitor_THT:CP_Radial_D5.0mm_P2.50mm")
@@ -1944,7 +1944,7 @@
       (reference "L1") (unit 1) (value "5.6uH") (footprint "Inductor_SMD:L_1206_3216Metric_Pad1.22x1.90mm_HandSolder")
     )
     (path "/618b85b8-3878-4dca-95c1-d1249ea332c0"
-      (reference "R1") (unit 1) (value "10k ") (footprint "")
+      (reference "R1") (unit 1) (value "10k ") (footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder")
     )
     (path "/66f41d59-e5a3-4e8f-8f6c-d365e8eefce7"
       (reference "U1") (unit 1) (value "ESP32-WROOM-32") (footprint "RF_Module:ESP32-WROOM-32")
