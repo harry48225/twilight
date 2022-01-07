@@ -5,7 +5,7 @@ from time import sleep
 class Motor_Controller():
   DIRECTION_UP = 1
   DIRECTION_DOWN = 0
-  MOTOR_DELAY = 0.0002
+  MOTOR_DELAY = 0.0005
   LOWERED_POSITION = 170_000/2 #170_000 is for 1/32 step  Good for highest microstepping resolution
   MOTOR_FILE = "motor_position.txt"
   def __init__(self):
