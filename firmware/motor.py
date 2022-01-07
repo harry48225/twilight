@@ -1,10 +1,11 @@
 from machine import Pin
 import uasyncio
+from time import sleep
 
 class Motor_Controller():
   DIRECTION_UP = 1
   DIRECTION_DOWN = 0
-  MOTOR_DELAY = 0.000025
+  MOTOR_DELAY = 0.0002
   LOWERED_POSITION = 170_000/2 #170_000 is for 1/32 step  Good for highest microstepping resolution
   MOTOR_FILE = "motor_position.txt"
   def __init__(self):
@@ -38,9 +39,10 @@ class Motor_Controller():
   def set_direction_down(self):
     self.direction.off()
 
-  async def step(self):
+  def step(self):
     '''steps the motor in the current direction, note: the motor must be turned on'''
     self.stepPin.on()
+    sleep(self.MOTOR_DELAY)
     self.stepPin.off()
     if self.direction.value() == self.DIRECTION_UP:
       self.motor_position -= 1
@@ -52,27 +54,27 @@ class Motor_Controller():
     with open(self.MOTOR_FILE, 'w') as f:
       f.write(str(self.motor_position))
 
-  async def lower_blind(self):
+  def lower_blind(self):
     self.direction.value(self.DIRECTION_DOWN)
     self.motor.on()
     print("lowering blind")
     self.running = True
     while self.motor_position < self.LOWERED_POSITION:
-      await self.step()
-      await uasyncio.sleep(self.MOTOR_DELAY)
+      self.step()
+      sleep(self.MOTOR_DELAY)
     self.motor.off()
     self.save_position()
     print("blind lowered!")
     self.running = False
 
-  async def raise_blind(self):
+  def raise_blind(self):
     self.direction.value(self.DIRECTION_UP)
     self.motor.on()
     self.running = True
     print("raising blind")
     while self.motor_position > 0:
-      await self.step()
-      await uasyncio.sleep(self.MOTOR_DELAY)
+      self.step()
+      sleep(self.MOTOR_DELAY)
     self.motor.off()
     self.save_position()
     print("blind raised!")

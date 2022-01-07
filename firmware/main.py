@@ -56,20 +56,20 @@ async def not_api(request, path):
   return response
 
 @app.route('api/lower_blind')
-async def lower_blind(request):
+def lower_blind(request):
   if (motor.running):
     return Response(status_code=503) # Service unavailable code
   else:
-    uasyncio.create_task(motor.lower_blind())
-    return Response()
+    motor.lower_blind()
+    return Response(body={'height': motor.get_normalised_height()})
 
 @app.route('api/raise_blind')
-async def raise_blind(request):
+def raise_blind(request):
   if (motor.running):
     return Response(status_code=503) # Service unavailable code
   else:
-    uasyncio.create_task(motor.raise_blind())
-    return Response()
+    motor.raise_blind()
+    return Response(body={'height': motor.get_normalised_height()})
 
 @app.route('api/current_time')
 async def current_time(request):
