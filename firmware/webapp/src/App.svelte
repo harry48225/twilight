@@ -17,8 +17,8 @@ onMount(async () => {
 <Header/>
 <main>
 	<SunPositionTable/>
-	<button on:click={() => fetch("/api/lower_blind")}>lower</button>
-	<button on:click={() => fetch("/api/raise_blind")}>raise</button>
+	<button on:click={() => fetch("/api/lower_blind").then(async (response) => normalisedHeight = (await response.json()).height)}>lower</button>
+	<button on:click={() => fetch("/api/raise_blind").then(async (response) => normalisedHeight = (await response.json()).height)}>raise</button>
 	<Scheduler/>
 	<BlindGraphic normalisedHeight={normalisedHeight}/>
 </main>
