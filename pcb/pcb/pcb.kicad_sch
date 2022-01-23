@@ -1506,7 +1506,7 @@
   (symbol (lib_id "Device:LED") (at 109.22 59.69 180) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 22353318-b610-462d-b49d-6e81aee2c761)
-    (property "Reference" "D?" (id 0) (at 110.8075 52.07 0))
+    (property "Reference" "D1" (id 0) (at 110.8075 52.07 0))
     (property "Value" "LED" (id 1) (at 110.8075 54.61 0))
     (property "Footprint" "LED_SMD:LED_1206_3216Metric_Pad1.42x1.75mm_HandSolder" (id 2) (at 109.22 59.69 0)
       (effects (font (size 1.27 1.27)) hide)
@@ -1623,7 +1623,7 @@
   (symbol (lib_id "Device:R") (at 101.6 59.69 90) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 608f4001-cff0-46a4-9e8b-63808992aebd)
-    (property "Reference" "R?" (id 0) (at 101.6 53.34 90))
+    (property "Reference" "R2" (id 0) (at 101.6 53.34 90))
     (property "Value" "650" (id 1) (at 101.6 55.88 90))
     (property "Footprint" "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder" (id 2) (at 101.6 61.468 90)
       (effects (font (size 1.27 1.27)) hide)
@@ -1760,7 +1760,7 @@
   (symbol (lib_id "power:+3.3V") (at 95.25 59.69 0) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 756a2c8a-40fc-4498-a763-fe751bbab7c7)
-    (property "Reference" "#PWR?" (id 0) (at 95.25 63.5 0)
+    (property "Reference" "#PWR022" (id 0) (at 95.25 63.5 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+3.3V" (id 1) (at 95.25 54.61 0))
@@ -2180,7 +2180,7 @@
   (symbol (lib_id "power:GND") (at 116.84 59.69 0) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid eafbdab6-0932-4d35-a03e-562d4b5965e8)
-    (property "Reference" "#PWR?" (id 0) (at 116.84 66.04 0)
+    (property "Reference" "#PWR023" (id 0) (at 116.84 66.04 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (id 1) (at 116.84 64.77 0))
@@ -2318,10 +2318,10 @@
       (reference "#PWR021") (unit 1) (value "GND") (footprint "")
     )
     (path "/756a2c8a-40fc-4498-a763-fe751bbab7c7"
-      (reference "#PWR?") (unit 1) (value "+3.3V") (footprint "")
+      (reference "#PWR022") (unit 1) (value "+3.3V") (footprint "")
     )
     (path "/eafbdab6-0932-4d35-a03e-562d4b5965e8"
-      (reference "#PWR?") (unit 1) (value "GND") (footprint "")
+      (reference "#PWR023") (unit 1) (value "GND") (footprint "")
     )
     (path "/b03e052e-fb2e-4d5e-ae41-d75f2a2ed3e5"
       (reference "A1") (unit 1) (value "Breakout_DRV8825") (footprint "Module:Pololu_Breakout-16_15.2x20.3mm")
@@ -2345,7 +2345,7 @@
       (reference "C6") (unit 1) (value "10uF") (footprint "Capacitor_SMD:C_1206_3216Metric_Pad1.33x1.80mm_HandSolder")
     )
     (path "/22353318-b610-462d-b49d-6e81aee2c761"
-      (reference "D?") (unit 1) (value "LED") (footprint "LED_SMD:LED_1206_3216Metric_Pad1.42x1.75mm_HandSolder")
+      (reference "D1") (unit 1) (value "LED") (footprint "LED_SMD:LED_1206_3216Metric_Pad1.42x1.75mm_HandSolder")
     )
     (path "/34fa3d54-c535-425c-b022-e1943d8d5f86"
       (reference "H1") (unit 1) (value "MountingHole") (footprint "MountingHole:MountingHole_2.7mm_M2.5_Pad")
@@ -2375,7 +2375,7 @@
       (reference "R1") (unit 1) (value "10k ") (footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder")
     )
     (path "/608f4001-cff0-46a4-9e8b-63808992aebd"
-      (reference "R?") (unit 1) (value "650") (footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder")
+      (reference "R2") (unit 1) (value "650") (footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder")
     )
     (path "/6efe0832-cbd1-4935-befc-012d6101080a"
       (reference "SW1") (unit 1) (value "RESET") (footprint "buttons:PTS636SK43LFS")
