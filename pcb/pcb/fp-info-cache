@@ -1,4 +1,4 @@
-19803100146666938
+19818612164245974
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -49335,13 +49335,6 @@ SMD SMT ceramic resonator filter filter hand-soldering
 0
 3
 3
-CustomSymbols
-octo
-
-
-0
-0
-0
 Diode_SMD
 D_0201_0603Metric
 Diode SMD 0201 (0603 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.vishay.com/docs/20052/crcw0201e3.pdf), generated with kicad-footprint-generator
@@ -59471,6 +59464,13 @@ Hamamatsu SiPM
 0
 2
 2
+OptoDevice
+Kingbright_KPS-3227
+3.2mmx2.7mm, light sensor, https://www.kingbright.com/attachments/file/psearch/000/00/00/KPS-3227SP1C(Ver.16).pdf
+KPS-3227 Ambient Light Photo Sensor
+0
+4
+4
 OptoDevice
 Kingbright_KPS-5130
 http://www.kingbright.com/attachments/file/psearch/000/00/00/KPS-5130PD7C(Ver.14).pdf
@@ -84479,6 +84479,13 @@ Varistor
 RV_Disc_D21.5mm_W11.4mm_P10mm
 Varistor, diameter 21.5mm, width 11.4mm, pitch 10mm
 varistor SIOV
+0
+2
+2
+buttons
+PTS636SK43LFS
+PTS636 SK43 LFS-2
+Switch
 0
 2
 2
