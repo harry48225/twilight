@@ -596,7 +596,7 @@
     (property "Sheetfile" "pcb.kicad_sch")
     (property "Sheetname" "")
     (path "/72d1a3aa-0e7b-4b10-a84c-7a0d93e80db5")
-    (attr exclude_from_pos_files exclude_from_bom)
+    (attr exclude_from_pos_files)
     (fp_text reference "H3" (at 0 -4.2) (layer "F.SilkS") hide
       (effects (font (size 1 1) (thickness 0.15)))
       (tstamp 66e8d694-27ef-4c41-8438-37737035d5c3)
@@ -1071,7 +1071,7 @@
     (pad "38" smd rect (at 8.5 -8.255 90) (size 2 0.9) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 2 "GND") (pinfunction "GND") (pintype "passive") (tstamp 72a9b13b-71cf-4394-b559-2e8e1f1ddbb8))
     (pad "39" smd rect (at -1 -0.755 90) (size 5 5) (layers "F.Cu" "F.Paste" "F.Mask")
-      (pinfunction "GND") (pintype "passive") (zone_connect 0) (thermal_width 0.1) (tstamp e55b31c5-de9f-4443-beb1-8ee3015d7a36))
+      (net 2 "GND") (pinfunction "GND") (pintype "passive") (zone_connect 0) (thermal_width 0.1) (tstamp e55b31c5-de9f-4443-beb1-8ee3015d7a36))
     (model "${KICAD6_3DMODEL_DIR}/RF_Module.3dshapes/ESP32-WROOM-32.wrl"
       (offset (xyz 0 0 0))
       (scale (xyz 1 1 1))
@@ -1374,7 +1374,7 @@
     (property "Sheetfile" "pcb.kicad_sch")
     (property "Sheetname" "")
     (path "/34fa3d54-c535-425c-b022-e1943d8d5f86")
-    (attr exclude_from_pos_files exclude_from_bom)
+    (attr exclude_from_pos_files)
     (fp_text reference "H1" (at 0 -4.2) (layer "F.SilkS") hide
       (effects (font (size 1 1) (thickness 0.15)))
       (tstamp b1deaa6f-a2c3-48dc-8451-43d1195f4686)
