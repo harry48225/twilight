@@ -1632,7 +1632,7 @@
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 502f00aa-5ed9-465a-8f44-348ad78d8c9d)
     (property "Reference" "R3" (id 0) (at 96.52 132.08 90))
-    (property "Value" "650" (id 1) (at 96.52 134.62 90))
+    (property "Value" "680" (id 1) (at 96.52 134.62 90))
     (property "Footprint" "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder" (id 2) (at 96.52 140.208 90)
       (effects (font (size 1.27 1.27)) hide)
     )
@@ -1662,7 +1662,7 @@
     (in_bom yes) (on_board yes)
     (uuid 608f4001-cff0-46a4-9e8b-63808992aebd)
     (property "Reference" "R2" (id 0) (at 241.3 49.53 90))
-    (property "Value" "650" (id 1) (at 238.76 49.53 90))
+    (property "Value" "680" (id 1) (at 238.76 49.53 90))
     (property "Footprint" "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder" (id 2) (at 233.172 49.53 90)
       (effects (font (size 1.27 1.27)) hide)
     )
@@ -2393,10 +2393,10 @@
       (reference "R1") (unit 1) (value "10k ") (footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder")
     )
     (path "/608f4001-cff0-46a4-9e8b-63808992aebd"
-      (reference "R2") (unit 1) (value "650") (footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder")
+      (reference "R2") (unit 1) (value "680") (footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder")
     )
     (path "/502f00aa-5ed9-465a-8f44-348ad78d8c9d"
-      (reference "R3") (unit 1) (value "650") (footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder")
+      (reference "R3") (unit 1) (value "680") (footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder")
     )
     (path "/6efe0832-cbd1-4935-befc-012d6101080a"
       (reference "SW1") (unit 1) (value "RESET") (footprint "buttons:PTS636SK43LFS")
