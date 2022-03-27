@@ -1,11 +1,12 @@
 import network
 import credentials
-from machine import Pin, freq
+from machine import freq
 from time import sleep, localtime
 from microdot_asyncio import Microdot, Response, send_file
 import uasyncio
 import ntptime
 import suncalc
+from motor import Motor_Controller
 
 LAT = 53.576866
 LONG = -2.428219
@@ -114,8 +115,6 @@ async def set_clock():
       print("error aquiring time, retrying")
       await uasyncio.sleep(1)
 
-
-
 app = Microdot()
 
 @app.route('/')
@@ -133,22 +132,21 @@ async def not_api(request, path):
 
   return response
 
-
 @app.route('api/lower_blind')
-async def lower_blind(request):
+def lower_blind(request):
   if (motor.running):
     return Response(status_code=503) # Service unavailable code
   else:
-    uasyncio.create_task(motor.lower_blind())
-    return Response()
+    motor.lower_blind()
+    return Response(body={'height': motor.get_normalised_height()})
 
 @app.route('api/raise_blind')
-async def raise_blind(request):
+def raise_blind(request):
   if (motor.running):
     return Response(status_code=503) # Service unavailable code
   else:
-    uasyncio.create_task(motor.raise_blind())
-    return Response()
+    motor.raise_blind()
+    return Response(body={'height': motor.get_normalised_height()})
 
 @app.route('api/current_time')
 async def current_time(request):
@@ -156,7 +154,6 @@ async def current_time(request):
 
 @app.route('api/normalised_height')
 async def normalised_height(request):
-  print(motor.get_normalised_height())
   return Response(body={'height': motor.get_normalised_height()})
 
 @app.route('api/sun_times')
@@ -164,11 +161,10 @@ async def sun_times(request):
   times = suncalc.getTimes(localtime(), LAT, LONG)
   return Response(body=times)
 
-motor = Motor_Contoller()
+motor = Motor_Controller()
 
 freq(240_000_000) # Set the clock speed to maximum
 wlan = get_wlan()
 uasyncio.create_task(set_clock())
 uasyncio.create_task(app.start_server(debug=True, port=80))
-print("server started")
 uasyncio.get_event_loop().run_forever()
