@@ -1522,10 +1522,6 @@
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid bbab1610-ad3e-41d6-a7c4-2ef3081d648a)
   )
-  (label "SLP" (at 175.26 138.43 0)
-    (effects (font (size 1.27 1.27)) (justify left bottom))
-    (uuid bd5df2f8-7031-4f2e-a591-efa4611a19a8)
-  )
   (label "STEP" (at 175.26 128.27 0)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid cf88c87b-36a5-4ff3-bdcd-cb6b92ebd7d6)
@@ -1617,6 +1613,22 @@
     (property "Datasheet" "~" (id 3) (at 34.29 27.94 0)
       (effects (font (size 1.27 1.27)) hide)
     )
+  )
+
+  (symbol (lib_id "power:+3.3V") (at 175.26 138.43 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid 39cc0ee6-3de2-4eb4-b08c-59f53e9be4df)
+    (property "Reference" "#PWR?" (id 0) (at 175.26 142.24 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Value" "" (id 1) (at 175.26 134.62 0))
+    (property "Footprint" "" (id 2) (at 175.26 138.43 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "" (id 3) (at 175.26 138.43 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid d5e4db5d-0a15-45a0-b068-834eec802b7c))
   )
 
   (symbol (lib_id "power:GND") (at 101.6 73.66 0) (unit 1)
@@ -2363,6 +2375,9 @@
     )
     (path "/1a69b35e-63d2-44fd-bb08-62ee1616de96"
       (reference "#PWR0104") (unit 1) (value "GND") (footprint "")
+    )
+    (path "/39cc0ee6-3de2-4eb4-b08c-59f53e9be4df"
+      (reference "#PWR?") (unit 1) (value "+3.3V") (footprint "")
     )
     (path "/b03e052e-fb2e-4d5e-ae41-d75f2a2ed3e5"
       (reference "A1") (unit 1) (value "Breakout_DRV8825") (footprint "Module:Pololu_Breakout-16_15.2x20.3mm")
