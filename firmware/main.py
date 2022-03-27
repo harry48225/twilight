@@ -19,9 +19,9 @@ class Motor_Contoller():
   LOWERED_POSITION = 170_000/2 #170_000 is for 1/32 step  Good for highest microstepping resolution
   MOTOR_FILE = "motor_position.txt"
   def __init__(self):
-    self.stepPin = Pin(32, Pin.OUT)
-    self.direction = Pin(33, Pin.OUT) # on is up, off is down
-    self.motor = Pin(25, Pin.OUT) # Connected to the sleep pin
+    self.stepPin = Pin(14, Pin.OUT)
+    self.direction = Pin(12, Pin.OUT) # on is up, off is down
+    self.motor = Pin(27, Pin.OUT) # Connected to the sleep pin
     self.motor.off()
     self.motor_position: int = self.load_saved_position()
     self.running = False
