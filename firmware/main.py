@@ -101,13 +101,13 @@ async def sun_times(request):
   times = suncalc.getTimes(localtime(), LAT, LONG)
   return Response(body=times)
 
-motor = Motor_Controller()
+wdt = WDT(timeout=5000) # Watchdog with timeout of 5 seconds
+motor = Motor_Controller(wdt)
 
 status_LED = Pin(26, Pin.OUT)
 
 freq(240_000_000) # Set the clock speed to maximum
 wlan = get_wlan()
-wdt = WDT(timeout=5000) # Watchdog with timeout of 5 seconds
 uasyncio.create_task(set_clock())
 uasyncio.create_task(feed_watchdog())
 uasyncio.create_task(app.start_server(debug=True, port=80))
