@@ -18,6 +18,7 @@ def get_wlan():
   wlan = network.WLAN(network.STA_IF)
   wlan.active(True)
   wlan.config(dhcp_hostname=HOSTNAME)
+  wlan.ifconfig(('192.168.0.201', '255.255.255.0', '192.168.0.1', '8.8.8.8'))
   wlan.connect(credentials.SSID, credentials.PASSWORD)
 
   print(f"connecting to wlan {credentials.SSID}, with password: {credentials.PASSWORD}")
@@ -71,6 +72,27 @@ async def not_api(request, path):
     response = send_file("public/index.html")
 
   return response
+
+@app.route('api/ha/switch', methods=['GET','POST'])
+def home_assistant_switch(request):
+  global motor
+  if request.method == 'POST':
+    state = request.body.decode('utf-8')
+    print(state)
+    if state == "ON":
+      motor.lower_blind()
+      print("LOWERING BLIND")
+    elif state == "OFF":
+      motor.raise_blind()
+    return Response(status_code=200)
+  elif request.method == 'GET':
+    height = motor.get_normalised_height()
+    if height >= 1:
+      state = 'ON'
+    else:
+      state = 'OFF'
+    print(f'current state: {state}')
+    return Response(status_code=200, body=state)
 
 @app.route('api/lower_blind')
 def lower_blind(request):

@@ -61,7 +61,6 @@ class Motor_Controller():
     self.direction.value(self.DIRECTION_DOWN)
     self.motor.on()
     print("lowering blind")
-    print(f"watchdog threshold {self.WATCHDOG_THRESHOLD}")
     self.running = True
     watchdog_counter = 0
     while self.motor_position < self.LOWERED_POSITION:
@@ -69,7 +68,6 @@ class Motor_Controller():
       sleep(self.MOTOR_DELAY)
       # This async so we should feed the watchdog
       if watchdog_counter > self.WATCHDOG_THRESHOLD:
-        print("feed")
         self.wdt.feed()
         watchdog_counter = 0
       watchdog_counter+=1

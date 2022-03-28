@@ -1,0 +1,27 @@
+# Example configuration.yaml entry
+switch:
+  - platform: rest
+    name: blind
+    resource: http://192.168.0.201/api/ha/switch
+    # 5 minute timeout since the response is lazy
+    timeout: 300
+
+cover:
+  - platform: template
+    covers:
+      bedroom_blind:
+        device_class: shade
+        friendly_name: "octoblind"
+        position_template: "{{0 if is_state('switch.blind', 'on') else 100}}"
+        close_cover:
+          - condition: state
+            entity_id: switch.blind
+            state: "off"
+          - service: switch.turn_on
+            entity_id: switch.blind
+        open_cover:
+          - condition: state
+            entity_id: switch.blind
+            state: "on"
+          - service: switch.turn_off
+            entity_id: switch.blind
